@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# initialize a folder containing a template .tex as well as a makefile for the doc
+
+DOCNAME=$1
+
+# look at these backslashes!
+TEXTEMPLATE="\\\documentclass[12pt]{article}
+
+% dont stop for each warning during compilation
+\\\nonstopmode
+
+% set up nice marigns
+\\\usepackage[
+  a4paper,
+  left=25mm,
+  right=25mm,
+  top=25mm,
+  bottom=20mm
+]{geometry}
+
+
+%\\\author{
+%  Jakob Ruckel
+%}
+%\\\date{Dezember 2017}
+%\\\title{ $DOCNAME_FULL }
+
+\\\begin{document}
+\\\maketitle
+%\\\newpage
+
+
+\\\end{document}"
+
+
+MAKETEMPLATE="$DOCNAME:
+\txelatex $DOCNAME.tex
+clean:
+\trm $DOCNAME.log $DOCNAME.aux"
+
+
+mkdir $DOCNAME
+
+cd $DOCNAME
+
+echo "$TEXTEMPLATE" > $DOCNAME.tex
+
+echo "$MAKETEMPLATE" > Makefile
