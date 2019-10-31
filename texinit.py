@@ -32,6 +32,11 @@ def _make_tex(args):
     texfile = _parse_template(args, templ)
     with open("%s/%s.tex" % (args["destination"], args["destination"]), "w+") as f:
         f.write(texfile)
+    ignorefile = os.path.expanduser("~/.texinit/%s.gitignore" % args["make_template"])
+    with open(ignorefile, "r") as f:
+            ignore = f.read()
+    with open("%s/.gitignore" % (args["destination"]), "w+") as f:
+        f.write(ignore)
 
 def main():
     p = argparse.ArgumentParser(description="Initialize a TeX document")
