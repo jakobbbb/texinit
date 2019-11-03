@@ -34,7 +34,8 @@ def _make_tex(args):
         f.write(texfile)
     ignorefile = os.path.expanduser("~/.texinit/%s.gitignore" % args["make_template"])
     with open(ignorefile, "r") as f:
-            ignore = f.read()
+            ignore_templ = f.read()
+    ignore = _parse_template(args, ignore_templ)
     with open("%s/.gitignore" % (args["destination"]), "w+") as f:
         f.write(ignore)
 

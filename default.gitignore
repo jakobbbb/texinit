@@ -1,4 +1,4 @@
-*.aux
-*.log
-*.out
-*.pdf
+{{DESTINATION}}.aux
+{{DESTINATION}}.log
+{{DESTINATION}}.out
+{{DESTINATION}}.pdf
