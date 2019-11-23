@@ -26,7 +26,7 @@ def _make_make(args):
 
 def _make_tex(args):
     print("Creating TeX-File for %s from template %s" % (args["destination"], args["template"]))
-    templ_file = os.path.expanduser("~/.texinit/%s.tex" % args["make_template"])
+    templ_file = os.path.expanduser("~/.texinit/%s.tex" % args["template"])
     with open(templ_file, "r") as f:
         templ = f.read()
     texfile = _parse_template(args, templ)
