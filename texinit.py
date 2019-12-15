@@ -13,7 +13,7 @@ def _parse_template(args, templ):
     return templ
 
 def _make_dir(args):
-    return os.mkdir(args["destination"])
+    return os.makedirs(args["destination"], exist_ok=True)
 
 def _make_make(args):
     print("Creating Makefile for %s from template %s" % (args["destination"], args["make_template"]))
