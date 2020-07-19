@@ -9,4 +9,5 @@ clean:
 		{{DESTINATION}}.log \
 		{{DESTINATION}}.out \
 		{{DESTINATION}}.pdf \
-		{{DESTINATION}}.synctex.gz
+		{{DESTINATION}}.synctex.gz \
+		{{DESTINATION}}.toc

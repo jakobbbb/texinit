@@ -6,3 +6,4 @@
 {{DESTINATION}}.out
 {{DESTINATION}}.pdf
 {{DESTINATION}}.synctex.gz
+{{DESTINATION}}.toc
