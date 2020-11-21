@@ -3,8 +3,10 @@ import argparse
 import re
 import os
 
+
 def _list_templates():
     return "\n".join(os.listdir(os.path.expanduser("~/.texinit/")))
+
 
 def _parse_template(args, templ):
     for k, v in args.items():
@@ -12,32 +14,48 @@ def _parse_template(args, templ):
         templ = r.sub(str(v), templ)
     return templ
 
+
 def _make_dir(args):
     return os.makedirs(args["destination"], exist_ok=True)
 
+
 def _make_make(args):
-    print("Creating Makefile for %s from template %s" % (args["destination"], args["make_template"]))
-    templ_file = os.path.expanduser("~/.texinit/%s.Makefile" % args["make_template"])
+    print(
+        "Creating Makefile for %s from template %s"
+        % (args["destination"], args["make_template"])
+    )
+    templ_file = os.path.expanduser(
+        "~/.texinit/%s.Makefile" % args["make_template"]
+    )
     with open(templ_file, "r") as f:
         templ = f.read()
     makefile = _parse_template(args, templ)
     with open("%s/Makefile" % (args["destination"]), "w+") as f:
         f.write(makefile)
 
+
 def _make_tex(args):
-    print("Creating TeX-File for %s from template %s" % (args["destination"], args["template"]))
+    print(
+        "Creating TeX-File for %s from template %s"
+        % (args["destination"], args["template"])
+    )
     templ_file = os.path.expanduser("~/.texinit/%s.tex" % args["template"])
     with open(templ_file, "r") as f:
         templ = f.read()
     texfile = _parse_template(args, templ)
-    with open("%s/%s.tex" % (args["destination"], args["destination"]), "w+") as f:
+    with open(
+        "%s/%s.tex" % (args["destination"], args["destination"]), "w+"
+    ) as f:
         f.write(texfile)
-    ignorefile = os.path.expanduser("~/.texinit/%s.gitignore" % args["make_template"])
+    ignorefile = os.path.expanduser(
+        "~/.texinit/%s.gitignore" % args["make_template"]
+    )
     with open(ignorefile, "r") as f:
-            ignore_templ = f.read()
+        ignore_templ = f.read()
     ignore = _parse_template(args, ignore_templ)
     with open("%s/.gitignore" % (args["destination"]), "w+") as f:
         f.write(ignore)
+
 
 def main():
     p = argparse.ArgumentParser(description="Initialize a TeX document")
@@ -65,6 +83,7 @@ def main():
     _make_tex(args)
 
     print(args)
+
 
 if __name__ == "__main__":
     r = main()
