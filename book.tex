@@ -1,0 +1,109 @@
+\documentclass[a5paper]{book}
+
+% symlink to ~/.texinit/book.tex:
+%   ln -s /home/jakob/uni/template-book.tex /home/jakob/.texinit/book.tex
+
+%-----------------------------------------------------------------------
+% LaTeX packages
+%-----------------------------------------------------------------------
+
+\usepackage[mono=false]{libertine}
+
+% Set language to German
+\usepackage[ngerman]{babel}
+\selectlanguage{ngerman}
+
+\usepackage{textcomp}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+\usepackage[pdfborderstyle={/S/U/W 1}]{hyperref}
+\usepackage{xspace}
+\usepackage{lipsum}
+%\usepackage[utf8]{inputenc}
+
+\usepackage[symbol]{footmisc}
+%\usepackage{indentfirst}
+%\setlength\parindent{0pt} % disable indenting
+
+\usepackage{array} % allows for things like `>{\bf}c` in tables
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE]{\textsc{\rightmark}}
+\fancyhead[LO]{\textsc{\leftmark}}
+\fancyhead[RO]{\thepage}
+\fancyhead[LE]{\thepage}
+
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand*{\headrulewidth}{0pt}
+  %\fancyfoot[C]{--~\thepage~--}
+  \fancyfoot[C]{\thepage}
+}
+
+\usepackage{titling}
+
+%-----------------------------------------------------------------------
+% Theorems
+%-----------------------------------------------------------------------
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+%-----------------------------------------------------------------------
+% Macros
+%-----------------------------------------------------------------------
+
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\encrypt}[1]{\ensuremath{E(#1)}\xspace}
+\newcommand{\decrypt}[1]{\ensuremath{D(#1)}\xspace}
+
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+% Fix `Package Fancyhdr Warning: \headheight is too small (12.0pt): Make it at least 12.37082pt`
+\setlength{\headheight}{12.7pt}
+
+%-----------------------------------------------------------------------
+
+\begin{document}
+
+%-----------------------------------------------------------------------
+% Title
+%-----------------------------------------------------------------------
+
+\title{\textbf{%
+    {{DESTINATION}}
+}}
+\author{Donald Duck\\
+  \normalsize \href{mailto:donald.duck@example.org}
+    {\nolinkurl{donald.duck@example.org}} \\
+  \normalsize Matrikelnummer: 123456\\
+  \vspace{3mm}
+  \normalsize Bauhaus-Universit\"at Weimar\\
+}
+
+\maketitle
+
+\tableofcontents
+
+%-----------------------------------------------------------------------
+% Content
+%-----------------------------------------------------------------------
+
+
+
+%-----------------------------------------------------------------------
+\end{document}
